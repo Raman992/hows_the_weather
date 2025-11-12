@@ -13,7 +13,7 @@ const Navbar = () => {
     }
 
   return (
-<nav className="w-full py-3 flex justify-between items-center bg-amber-300">
+<nav className="w-full p-2 flex justify-between items-center ">
     <h1 className='font-bold tracking-wide text-3xl px-1'>How's the weather</h1>
     <div className='w-60 overflow-hidden shadow-2xl rounded flex items-center p-2 gap-2'>
         <i className="fa-solid fa-magnifying-glass "></i>

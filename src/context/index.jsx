@@ -4,7 +4,7 @@ import axios from "axios";
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
-  const [weather, setWeather] = useState(null);
+  const [weather, setWeather] = useState([]);
   const [values, setValues] = useState([]);
   const [place, setPlace] = useState("Kathmandu");
   const [currentLocation, setLocation] = useState("");
@@ -31,7 +31,7 @@ export const StateContextProvider = ({ children }) => {
       const thisData = Object.values(response.data.locations)[0];
       setLocation(thisData.address);
       setValues(thisData.values.slice(0, 7)); // limit to 7 days
-      setWeather(thisData.values[0]);
+      setWeather(thisData.values[1]);
     } catch (e) {
       console.error("Error fetching weather:", e);
     }
