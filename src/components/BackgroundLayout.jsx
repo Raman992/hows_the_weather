@@ -12,43 +12,43 @@ import { useStateContext } from '../context';
 
 const BackgroundLayout = () => {
 
-    const {weather} = useStateContext()
-    
+    const { weather } = useStateContext()
+
     const [image, setImage] = useState(Clear)
 
-    useEffect(()=>
-    {
-        if(weather.conditions){
+    useEffect(() => {
+        if (weather.conditions) {
             let imageString = weather.conditions
-            if(imageString.toLowerCase().includes('clear')){
+            if (imageString.toLowerCase().includes('clear')) {
                 setImage(Clear)
             }
-            else if(imageString.toLowerCase().includes('cloud')){
+            else if (imageString.toLowerCase().includes('cloud')) {
                 setImage(Cloudy)
             }
-            else if(imageString.toLowerCase().includes('rain')||imageString.toLowerCase().includes('rain')){
+            else if (imageString.toLowerCase().includes('rain') || imageString.toLowerCase().includes('shower')) {
                 setImage(Rainy)
             }
-            else if(imageString.toLowerCase().includes('wind')){
+            else if (imageString.toLowerCase().includes('wind')) {
                 setImage(Windy)
             }
-            else if(imageString.toLowerCase().includes('fog')){
+            else if (imageString.toLowerCase().includes('fog')) {
                 setImage(Foggy)
             }
-            else if(imageString.toLowerCase().includes('snow')){
+            else if (imageString.toLowerCase().includes('snow')) {
                 setImage(Snowy)
             }
-            else if(imageString.toLowerCase().includes('storm')||imageString.toLowerCase().includes('thunder')){
+            else if (imageString.toLowerCase().includes('storm') || imageString.toLowerCase().includes('thunder')) {
                 setImage(Stormy)
-            }            
+            }
         }
-    },[weather]
+    }, [weather]
     )
-  return (
-    <div>
-      <img src={image} alt="bg" className='h-screen w-full bg-cover bg-center bg-no-repeat -z-10'/>
-    </div>
-  )
+    return (
+        <div className="absolute top-0 left-0 w-full h-full -z-10">
+            <img src={image} alt="background" className="w-full h-full object-cover" />
+        </div>
+
+    )
 }
 
 export default BackgroundLayout

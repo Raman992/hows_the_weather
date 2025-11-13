@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useDate } from '../utils/useDate'
-import sun from '../assets/icons/sun.png'
-import cloud from '../assets/icons/cloud.png'
-import fog from '../assets/icons/fog.png'
-import rain from '../assets/icons/rain.png'
-import snow from '../assets/icons/snow.png'
-import storm from '../assets/icons/storm.png'
-import wind from '../assets/icons/windy.png'
+import useDate from '../utils/useDate'
+import sun from '/icons/sun.png';
+import cloud from '/icons/cloud.png';
+import fog from '/icons/fog.png';
+import rain from '/icons/rain.png';
+import snow from '/icons/snow.png';
+import storm from '/icons/storm.png';
+import wind from '/icons/windy.png';
 
 const WeatherCard = ({
   temperature,
@@ -18,7 +18,7 @@ const WeatherCard = ({
   conditions
 }) => {
  const [icon, setIcon] = useState(sun)
-  const { time } = useDate()
+  const { date, time } = useDate()
 
   useEffect(() => {
     if (iconString) {
@@ -40,30 +40,37 @@ const WeatherCard = ({
     }
   }, [iconString])
   return (
-    <div className='w-88 min-w-88 h-120 weathercard p-4'>
-     <div className='flex w-full just-center, items-center gap-4 mt-12 mb-4'>
-        <img src={icon} alt="weather_icon" />
-        <p className='font-bold text-5xl flex justify-center items-center' >{temperature} &deg;C</p>
+    <div className="mx-auto mt-24 w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px] rounded-2xl p-6 
+      bg-white/20 backdrop-blur-lg shadow-xl border border-white/30 text-white">
+      <div className="flex flex-col items-center gap-2">
+        <img src={icon} alt="weather" className="w-20 h-20" />
+        <h1 className="text-5xl font-bold">{temperature ? `${temperature}°C` : "--°C"}</h1>
+        <h2 className="text-lg font-medium text-center">{place}</h2>
       </div>
-      <div className='font-bold text-center text-xl'>
-        {place}
+
+      <div className="flex justify-between text-sm text-gray-100 mt-4">
+        <p>{date}</p>
+        <p>{time}</p>
       </div>
-      <div className='w-full flex justify-between items-center mt-4'>
-        <p className='flex-1 text-center p-2'>{new Date().toDateString()}</p>
-        <p className='flex-1 text-center p-2'>{time}</p>
+
+      <div className="flex justify-between gap-3 mt-6">
+        <div className="flex-1 text-center p-3 bg-blue-600/70 rounded-xl shadow-md">
+          <p className="font-semibold">Wind Speed</p>
+          <p className="text-lg font-bold">{windspeed ?? "N/A"}</p>
+        </div>
+        <div className="flex-1 text-center p-3 bg-green-600/70 rounded-xl shadow-md">
+          <p className="font-semibold">Humidity</p>
+          <p className="text-lg font-bold">{humidity ?? "N/A"}</p>
+        </div>
       </div>
-      <div className='w-full flex justify-between items-center mt-4 gap-4'>
-        <p className='flex-1 text-center p-2 font-bold bg-blue-600 shadow rounded-lg'>Wind Speed <p className='font-normal'>{windspeed} km/h</p></p>
-        <p className='flex-1 text-center p-2 font-bold rounded-lg bg-green-600'>Humidity <p className='font-normal'>{humidity} gm/m&#179;</p></p>
+
+      <div className="mt-6 text-center">
+        <p className="font-semibold">Heat Index: {heatIndex ?? "N/A"}</p>
       </div>
-      <div className='w-full p-3 mt-4 flex justify-between items-center'>
-        <p className='font-semibold text-lg'>Heat Index</p>
-        <p className='text-lg'>{heatIndex ? heatIndex : 'N/A'}</p>
-      </div>
-      <hr className='bg-slate-600' />
-      <div className='w-full p-4 flex justify-center items-center text-3xl font-semibold'>
-        {conditions}
-      </div>
+
+      <hr className="my-3 border-white/30" />
+
+      <p className="text-center text-xl font-semibold">{conditions}</p>
     </div>
   )
 }

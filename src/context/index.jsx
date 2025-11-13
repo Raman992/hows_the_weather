@@ -4,7 +4,7 @@ import axios from "axios";
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
-  const [weather, setWeather] = useState([]);
+  const [weather, setWeather] = useState({});
   const [values, setValues] = useState([]);
   const [place, setPlace] = useState("Kathmandu");
   const [currentLocation, setLocation] = useState("");
@@ -25,17 +25,24 @@ export const StateContextProvider = ({ children }) => {
         "x-rapidapi-key": import.meta.env.VITE_API_KEY,
       },
     };
-
-    try {
+try {
       const response = await axios.request(options);
       const thisData = Object.values(response.data.locations)[0];
+      
+      if (!thisData) {
+        throw new Error("Location not found");
+      }
+      
       setLocation(thisData.address);
-      setValues(thisData.values.slice(0, 7)); // limit to 7 days
-      setWeather(thisData.values[1]);
+      setValues(thisData.values.slice(0, 7));
+      setWeather(thisData.values[0] || thisData.values[1]); // Handle index properly
     } catch (e) {
       console.error("Error fetching weather:", e);
-    }
-  };
+      setError("Failed to fetch weather data. Please check the location name.");
+      setWeather({});
+      setValues([]);
+    } 
+    };
 
   useEffect(() => {
     fetchWeather();
