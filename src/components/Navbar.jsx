@@ -15,21 +15,28 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="w-full p-2 flex justify-between items-center fixed top-0 left-0 right-0 z-50 bg-white/20 backdrop-blur-md border-b border-gray-200/50">
-      <img src="/icons/icon.png" alt="logo" className="w-9" />
-      <h1 className="font-bold tracking-wide text-3xl px-1">How's the weather</h1>
-      <div className="w-60 overflow-hidden shadow-2xl rounded flex items-center p-2 gap-2">
-        <i className="fa-solid fa-magnifying-glass"></i>
-        <input
-          type="text"
-          placeholder="Search"
-          onKeyUp={onKeyUp}
-          className="focus:outline-0 w-full text-[#212121] text-lg"
-          value={input}
-          onChange={onChange}
-        />
+    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-white/20 border-b border-white/30">
+      <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center px-4 py-3 sm:px-6">
+        <div className="flex items-center gap-2">
+          <img src="/icons/icon.png" alt="logo" className="w-8 h-8 sm:w-10 sm:h-10" />
+          <h1 className="font-bold text-2xl sm:text-3xl tracking-wide text-white drop-shadow-md">
+            How's the Weather
+          </h1>
+        </div>
+        <div className="mt-3 sm:mt-0 w-full sm:w-64 flex items-center gap-2 bg-white/30 rounded-xl shadow-lg px-3 py-2">
+          <i className="fa-solid fa-magnifying-glass text-white/90"></i>
+          <input
+            type="text"
+            placeholder="Search city..."
+            onKeyUp={onKeyUp}
+            value={input}
+            onChange={onChange}
+            className="w-full bg-transparent placeholder-white/70 text-white text-base focus:outline-none"
+          />
+        </div>
       </div>
     </nav>
+
   )
 }
 
