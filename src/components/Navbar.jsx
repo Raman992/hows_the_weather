@@ -23,15 +23,15 @@ const Navbar = () => {
             How's the Weather
           </h1>
         </div>
-        <div className="mt-3 sm:mt-0 w-full sm:w-64 flex items-center gap-2 bg-white/30 rounded-xl shadow-lg px-3 py-2">
-          <i className="fa-solid fa-magnifying-glass text-white/90"></i>
+        <div className="mt-3 sm:mt-0 w-full sm:w-64 flex items-center gap-2 bg-white/30 rounded-xl shadow-lg px-3 py-2 hover:scale-102 transition-transform duration-300">
+          <i className="fa-solid fa-magnifying-glass text-white/90 "></i>
           <input
             type="text"
             placeholder="Search city..."
             onKeyUp={onKeyUp}
             value={input}
             onChange={onChange}
-            className="w-full bg-transparent placeholder-white/70 text-white text-base focus:outline-none"
+            className="w-full bg-transparent placeholder-white/70 text-white text-base focus:outline-none "
           />
         </div>
       </div>
