@@ -6,7 +6,7 @@ A beautiful, responsive, and fast Weather Forecast website that fetches and disp
 
 ### 📸 Screenshots
 <img width="1917" height="940" alt="image" src="https://github.com/user-attachments/assets/69323c76-9e1b-4d89-8b09-b4ed4d3dd306" />
-<img width="1916" height="940" alt="image" src="https://github.com/user-attachments/assets/c2f5fa00-7572-4525-be43-be1920e4d654" />
+<img width="1913" height="934" alt="image" src="https://github.com/user-attachments/assets/03714c9e-0870-4574-8c5d-3b8920268dbe" />
 <img width="504" height="862" alt="image" src="https://github.com/user-attachments/assets/b0a4be56-161f-460e-9341-ea0f3f364b89" />
 
 
