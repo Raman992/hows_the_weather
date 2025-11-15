@@ -1,18 +1,39 @@
-# React + Vite
+# 🌥️ How's The Weather - Weather Forecast in Real-Time
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+*Live Weather built with React & Visual Crossing Weather*
 
-Currently, two official plugins are available:
+A beautiful, responsive, and fast Weather Forecast website that fetches and displays **real-time weather** from around the world using the free [VisualCrossingWeatherAPI](https://rapidapi.com/visual-crossing-corporation-visual-crossing-corporation-default/api/visual-crossing-weather).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 📸 Screenshots
+<img width="1917" height="940" alt="image" src="https://github.com/user-attachments/assets/69323c76-9e1b-4d89-8b09-b4ed4d3dd306" />
+<img width="1916" height="940" alt="image" src="https://github.com/user-attachments/assets/c2f5fa00-7572-4525-be43-be1920e4d654" />
+<img width="504" height="862" alt="image" src="https://github.com/user-attachments/assets/b0a4be56-161f-460e-9341-ea0f3f364b89" />
 
-## React Compiler
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
 
-Note: This will impact Vite dev & build performances.
+### 🚀 Features
+- **Real-time Weather Forecast**
+- **Clean & Modern UI** with card-based layout
+- **Fully Responsive** – works perfectly on mobile, tablet, and desktop
+- **Fast Loading** with optimized image delivery
+- Built with **React + Vite** for blazing-fast performance
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🛠️ Tech Stack
+- **React 18** + **Vite**
+- **NewsAPI.org** (free tier)
+- **React Hooks** (`useState`, `useEffect`,`useContext`)
+
+
+### 🚀 How to Run Locally
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/Raman992/hows_the_weather.git
+
+# 2. Enter the project
+cd hows_the_weather
+
+# 3. Install dependencies
+npm install
+create .env.local for adding your api
