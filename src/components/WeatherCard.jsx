@@ -13,7 +13,6 @@ const WeatherCard = ({
   windspeed,
   humidity,
   place,
-  heatIndex,
   iconString,
   conditions
 }) => {
@@ -62,10 +61,6 @@ const WeatherCard = ({
           <p className="font-semibold">Humidity</p>
           <p className="text-lg font-bold">{humidity ?? "N/A"}</p>
         </div>
-      </div>
-
-      <div className="mt-6 text-center">
-        <p className="font-semibold">Heat Index: {heatIndex ?? "N/A"}</p>
       </div>
 
       <hr className="my-3 border-white/30" />
