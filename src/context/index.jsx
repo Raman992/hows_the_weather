@@ -38,7 +38,6 @@ try {
       setWeather(thisData.values[0] || thisData.values[1]); // Handle index properly
     } catch (e) {
       console.error("Error fetching weather:", e);
-      setError("Failed to fetch weather data. Please check the location name.");
       setWeather({});
       setValues([]);
     } 

@@ -1,42 +1,81 @@
 import React, { useState } from 'react'
 import { useStateContext } from '../context'
+import citySuggestions from '../data/cities.json'
 
 const Navbar = () => {
   const [input, setInput] = useState('')
+  const [suggestions, setSuggestions] = useState([])
   const { setPlace } = useStateContext()
 
-  const onChange = (e) => setInput(e.target.value)
+  const onChange = (e) => {
+    const value = e.target.value
+    setInput(value)
+
+    if (value.trim() === "") {
+      setSuggestions([])
+      return
+    }
+    const filtered = citySuggestions.filter(city =>
+      city.toLowerCase().startsWith(value.toLowerCase())
+    )
+    setSuggestions(filtered)
+  }
 
   const onKeyUp = (e) => {
     if (e.key === 'Enter' && input.trim() !== '') {
       setPlace(input)
       setInput('')
+      setSuggestions([])
     }
+  }
+
+  const onSuggestionClick = (city) => {
+    setPlace(city)
+    setInput('')
+    setSuggestions([])
   }
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-white/20 border-b border-white/30">
       <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center px-4 py-3 sm:px-6">
+        
         <div className="flex items-center gap-2">
           <img src="/icons/icon.png" alt="logo" className="w-8 h-8 sm:w-10 sm:h-10" />
           <h1 className="font-bold text-2xl sm:text-3xl tracking-wide text-white drop-shadow-md">
             How's the Weather
           </h1>
         </div>
-        <div className="mt-3 sm:mt-0 w-full sm:w-64 flex items-center gap-2 bg-white/30 rounded-xl shadow-lg px-3 py-2 hover:scale-102 transition-transform duration-300">
-          <i className="fa-solid fa-magnifying-glass text-white/90 "></i>
-          <input
-            type="text"
-            placeholder="Search city..."
-            onKeyUp={onKeyUp}
-            value={input}
-            onChange={onChange}
-            className="w-full bg-transparent placeholder-white/70 text-white text-base focus:outline-none "
-          />
+
+        <div className="relative mt-3 sm:mt-0 w-full sm:w-64">
+          <div className="flex items-center gap-2 bg-white/30 rounded-xl shadow-lg px-3 py-2 hover:scale-102 transition-transform duration-300">
+            <i className="fa-solid fa-magnifying-glass text-white/90"></i>
+            <input
+              type="text"
+              placeholder="Search city..."
+              onKeyUp={onKeyUp}
+              value={input}
+              onChange={onChange}
+              className="w-full bg-transparent placeholder-white/70 text-white text-base focus:outline-none"
+            />
+          </div>
+
+          {suggestions.length > 0 && (
+            <ul className="absolute left-0 right-0 mt-2 bg-white/30 backdrop-blur-xl rounded-xl shadow-lg overflow-hidden z-50">
+              {suggestions.map((city, index) => (
+                <li 
+                  key={index}
+                  onClick={() => onSuggestionClick(city)}
+                  className="px-3 py-2 text-gray-700 hover:bg-white cursor-pointer transition"
+                >
+                  {city}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
+
       </div>
     </nav>
-
   )
 }
 
